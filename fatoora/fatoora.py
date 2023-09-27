@@ -12,7 +12,7 @@ import json
 from typing import Union, Optional
 from PIL import Image
 import cv2
-from pydantic import validate_arguments
+from pydantic import validate_call
 import validators
 from datetime import datetime
 
@@ -133,7 +133,7 @@ class Fatoora:
         return self.__vat_rates
 
     @vat_rates.setter
-    @validate_arguments
+    @validate_call
     def vat_rates(self, rate: float) -> None:
         self.__vat_rates = rate
 
@@ -142,7 +142,7 @@ class Fatoora:
         return self.tags[1]
 
     @seller_name.setter
-    @validate_arguments
+    @validate_call
     def seller_name(self, new_value: str) -> None:
         self.tags[0x01] = new_value
 
@@ -151,7 +151,7 @@ class Fatoora:
         return self.tags[2]
 
     @tax_number.setter
-    @validate_arguments
+    @validate_call
     def tax_number(self, new_value: int) -> None:
         self.tags[0x02] = str(new_value)
 
@@ -160,7 +160,7 @@ class Fatoora:
         return datetime.strptime(self.tags[3], iso8601_zulu_format)
 
     @invoice_date.setter
-    @validate_arguments
+    @validate_call
     def invoice_date(self, date: Union[datetime, float, str]) -> None:
         """The ability to enter the invoice date as timestamp or datetime object, or string ISO 8601 Zulu format
             and save it as ISO 8601 Zulu format
@@ -187,7 +187,7 @@ class Fatoora:
         return float(self.tags[4])
 
     @total_amount.setter
-    @validate_arguments
+    @validate_call
     def total_amount(self, new_value: float) -> None:
         self.tags[0x04] = str(new_value)
 
@@ -196,7 +196,7 @@ class Fatoora:
         return float(self.tags[5])
 
     @tax_amount.setter
-    @validate_arguments
+    @validate_call
     def tax_amount(self, new_value: Optional[float] = None) -> None:
         """Auto set tax if it is `None` from `total_amount`
 
@@ -212,7 +212,7 @@ class Fatoora:
         return self._qrcode_url
 
     @qrcode_url.setter
-    @validate_arguments
+    @validate_call
     def qrcode_url(self, new_value: Optional[str] = None) -> None:
         if not new_value or validators.url(new_value):
             self._qrcode_url = new_value
@@ -230,7 +230,7 @@ class Fatoora:
         tlv_as_base64 = base64.b64encode(tlv_as_byte_array).decode()
         return tlv_as_base64
 
-    @validate_arguments
+    @validate_call
     def qrcode(self, filename: str) -> None:
         """Generate qr code for fatoora
 

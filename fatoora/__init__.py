@@ -25,8 +25,8 @@ ZATCA (Fatoora) QR-Code Implementation
 An unofficial package help developers to implement ZATCA (Fatoora) QR code easily which required for e-invoicing
 """
 
-from .fatoora import *
-from .version import *
+from .fatoora import Fatoora
+from .version import version
 
 __author__ = "Awiteb <https://github.com/TheAwiteb>"
 __copyright__ = "Copyright (c) 2021 <Awiteb@hotmail.com>"

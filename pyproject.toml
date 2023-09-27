@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "fatoora"
+version = "3.1.0"
+description = "An unofficial package help developers to implement ZATCA (Fatoora) QR code easily which required for e-invoicing"
+authors = ["TheAwiteb <Awiteb@hotmail.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["fatoora", "Fatoora", "ZATCA", "QR-Code"]
+classifiers=[
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+qrcode = "^7.4.2"
+uttlv = "^0.7.0"
+validators = "^0.22.0"
+opencv-python-headless = "^4.8.0.76"
+pillow = "^10.0.1"
+pydantic = "^2.4.1"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
